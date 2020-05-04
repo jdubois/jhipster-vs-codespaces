@@ -1,6 +1,5 @@
 {
     "name": "JHipster",
-    "image": "jhipster/jhipster:latest",
     "settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
