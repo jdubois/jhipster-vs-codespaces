@@ -1,5 +1,6 @@
 {
     "name": "JHipster",
+    "dockerFile": "Dockerfile",
     "settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
