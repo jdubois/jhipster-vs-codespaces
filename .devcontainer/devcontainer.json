@@ -1,6 +1,9 @@
 {
     "name": "JHipster",
     "image": "jhipster/jhipster:latest",
+    "settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
     // Open ports
     "forwardPorts": [8080, 9000],
   
