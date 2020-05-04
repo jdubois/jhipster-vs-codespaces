@@ -9,4 +9,4 @@ RUN \
   apt-get update && \
   apt-get install -y zulu-11 && \
   # cleanup
-  apt-get clean && \
+  apt-get clean
