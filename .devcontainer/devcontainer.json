@@ -1,4 +1,6 @@
 {
+    "name": "JHipster",
+    "image": "jhipster/jhipster:latest",
     // Open ports
     "forwardPorts": [8080, 9000],
   
