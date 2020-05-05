@@ -1,5 +1,9 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-18.04
 
+# Avoid warnings by switching to noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Configure apt and install packages
 RUN \
   apt-get update && \
   apt-get install -y \
@@ -11,3 +15,6 @@ RUN \
   apt-get install -y zulu-11 && \
   # cleanup
   apt-get clean
+
+# Switch back to dialog for any ad-hoc use of apt-get
+ENV DEBIAN_FRONTEND=dialog

@@ -1,6 +1,6 @@
 {
     "name": "JHipster",
-    "dockerFile": "Dockerfile",
+    "image": "jdubois/jhipster-codespaces",
     "settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
