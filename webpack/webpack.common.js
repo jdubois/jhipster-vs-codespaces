@@ -11,7 +11,7 @@ module.exports = (options) => ({
     resolve: {
         extensions: ['.ts', '.js'],
         modules: ['node_modules'],
-        mainFields: [ 'es2015', 'browser', 'module', 'main'],
+        mainFields: ['browser', 'module', 'main'],
         alias: utils.mapTypescriptAliasToWebpackAlias()
     },
     stats: {
@@ -27,11 +27,12 @@ module.exports = (options) => ({
                 test: /\.html$/,
                 loader: 'html-loader',
                 options: {
-                    minimize: true,
-                    caseSensitive: true,
-                    removeAttributeQuotes:false,
-                    minifyJS:false,
-                    minifyCSS:false
+                    minimize: {
+                        caseSensitive: true,
+                        removeAttributeQuotes:false,
+                        minifyJS:false,
+                        minifyCSS:false
+                    }
                 },
                 exclude: /(src\/main\/webapp\/index.html)/
             },

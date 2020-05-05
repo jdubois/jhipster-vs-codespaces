@@ -1,7 +1,9 @@
 package com.mycompany.myapp.security;
 
 import com.mycompany.myapp.config.Constants;
+
 import java.util.Optional;
+
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 

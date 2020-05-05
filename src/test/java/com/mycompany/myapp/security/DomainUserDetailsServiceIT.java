@@ -1,12 +1,9 @@
 package com.mycompany.myapp.security;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-
 import com.mycompany.myapp.JhipsterSampleApplicationApp;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.UserRepository;
-import java.util.Locale;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,12 +13,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Locale;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+
 /**
  * Integrations tests for {@link DomainUserDetailsService}.
  */
 @SpringBootTest(classes = JhipsterSampleApplicationApp.class)
 @Transactional
 public class DomainUserDetailsServiceIT {
+
     private static final String USER_ONE_LOGIN = "test-user-one";
     private static final String USER_ONE_EMAIL = "test-user-one@localhost";
     private static final String USER_TWO_LOGIN = "test-user-two";
@@ -35,13 +38,9 @@ public class DomainUserDetailsServiceIT {
     @Autowired
     private UserDetailsService domainUserDetailsService;
 
-    private User userOne;
-    private User userTwo;
-    private User userThree;
-
     @BeforeEach
     public void init() {
-        userOne = new User();
+        User userOne = new User();
         userOne.setLogin(USER_ONE_LOGIN);
         userOne.setPassword(RandomStringUtils.random(60));
         userOne.setActivated(true);
@@ -51,7 +50,7 @@ public class DomainUserDetailsServiceIT {
         userOne.setLangKey("en");
         userRepository.save(userOne);
 
-        userTwo = new User();
+        User userTwo = new User();
         userTwo.setLogin(USER_TWO_LOGIN);
         userTwo.setPassword(RandomStringUtils.random(60));
         userTwo.setActivated(true);
@@ -61,7 +60,7 @@ public class DomainUserDetailsServiceIT {
         userTwo.setLangKey("en");
         userRepository.save(userTwo);
 
-        userThree = new User();
+        User userThree = new User();
         userThree.setLogin(USER_THREE_LOGIN);
         userThree.setPassword(RandomStringUtils.random(60));
         userThree.setActivated(false);
@@ -73,7 +72,6 @@ public class DomainUserDetailsServiceIT {
     }
 
     @Test
-    @Transactional
     public void assertThatUserCanBeFoundByLogin() {
         UserDetails userDetails = domainUserDetailsService.loadUserByUsername(USER_ONE_LOGIN);
         assertThat(userDetails).isNotNull();
@@ -81,7 +79,6 @@ public class DomainUserDetailsServiceIT {
     }
 
     @Test
-    @Transactional
     public void assertThatUserCanBeFoundByLoginIgnoreCase() {
         UserDetails userDetails = domainUserDetailsService.loadUserByUsername(USER_ONE_LOGIN.toUpperCase(Locale.ENGLISH));
         assertThat(userDetails).isNotNull();
@@ -89,7 +86,6 @@ public class DomainUserDetailsServiceIT {
     }
 
     @Test
-    @Transactional
     public void assertThatUserCanBeFoundByEmail() {
         UserDetails userDetails = domainUserDetailsService.loadUserByUsername(USER_TWO_EMAIL);
         assertThat(userDetails).isNotNull();
@@ -97,7 +93,6 @@ public class DomainUserDetailsServiceIT {
     }
 
     @Test
-    @Transactional
     public void assertThatUserCanBeFoundByEmailIgnoreCase() {
         UserDetails userDetails = domainUserDetailsService.loadUserByUsername(USER_TWO_EMAIL.toUpperCase(Locale.ENGLISH));
         assertThat(userDetails).isNotNull();
@@ -105,7 +100,6 @@ public class DomainUserDetailsServiceIT {
     }
 
     @Test
-    @Transactional
     public void assertThatEmailIsPrioritizedOverLogin() {
         UserDetails userDetails = domainUserDetailsService.loadUserByUsername(USER_ONE_EMAIL);
         assertThat(userDetails).isNotNull();
@@ -113,9 +107,9 @@ public class DomainUserDetailsServiceIT {
     }
 
     @Test
-    @Transactional
     public void assertThatUserNotActivatedExceptionIsThrownForNotActivatedUsers() {
-        assertThatExceptionOfType(UserNotActivatedException.class)
-            .isThrownBy(() -> domainUserDetailsService.loadUserByUsername(USER_THREE_LOGIN));
+        assertThatExceptionOfType(UserNotActivatedException.class).isThrownBy(
+            () -> domainUserDetailsService.loadUserByUsername(USER_THREE_LOGIN));
     }
+
 }

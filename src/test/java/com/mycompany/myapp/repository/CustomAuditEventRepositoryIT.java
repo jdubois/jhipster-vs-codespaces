@@ -1,18 +1,10 @@
 package com.mycompany.myapp.repository;
 
-import static com.mycompany.myapp.repository.CustomAuditEventRepository.EVENT_DATA_COLUMN_MAX_LENGTH;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.mycompany.myapp.JhipsterSampleApplicationApp;
+
 import com.mycompany.myapp.config.Constants;
 import com.mycompany.myapp.config.audit.AuditEventConverter;
 import com.mycompany.myapp.domain.PersistentAuditEvent;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.servlet.http.HttpSession;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +15,23 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static com.mycompany.myapp.repository.CustomAuditEventRepository.EVENT_DATA_COLUMN_MAX_LENGTH;
+
 /**
  * Integration tests for {@link CustomAuditEventRepository}.
  */
 @SpringBootTest(classes = JhipsterSampleApplicationApp.class)
 @Transactional
 public class CustomAuditEventRepositoryIT {
+
     @Autowired
     private PersistenceAuditEventRepository persistenceAuditEventRepository;
 
@@ -151,4 +154,5 @@ public class CustomAuditEventRepositoryIT {
         List<PersistentAuditEvent> persistentAuditEvents = persistenceAuditEventRepository.findAll();
         assertThat(persistentAuditEvents).hasSize(0);
     }
+
 }
