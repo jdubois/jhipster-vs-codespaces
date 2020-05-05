@@ -10,6 +10,7 @@
     // Install ESLint and Peacock extensions
     "extensions": [
       "dbaeumer.vscode-eslint",
+      "ms-azuretools.vscode-docker",
       "ms-vscode.azurecli",
       "Pivotal.vscode-boot-dev-pack",
       "Pivotal.vscode-spring-boot",
