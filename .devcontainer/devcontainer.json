@@ -1,9 +1,9 @@
 {
     "name": "JHipster",
-    "image": "jdubois/jhipster-codespaces",
+    "image": "jdubois/jdubois-codespaces",
     "settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
-	},
+		  "terminal.integrated.shell.linux": "/bin/bash"
+	  },
     // Open ports
     "forwardPorts": [8080, 9000],
   
