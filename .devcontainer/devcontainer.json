@@ -1,6 +1,6 @@
 {
     "name": "JHipster",
-    "image": "mcr.microsoft.com/vscode/devcontainers/universal:linux",
+    "image": "jdubois/jdubois-codespaces",
     "settings": { 
 		  "terminal.integrated.shell.linux": "/bin/bash"
 	  },
